@@ -1,0 +1,38 @@
+<div class="container">
+    <section>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Shopping</th>
+    </tr>
+  </thead>
+  <tbody>
+     {{#each products}}
+    <tr>
+      <td>
+         <img class="img-fluid" src="/images/{{this.products.item}}.jpg"
+                            style="width: 100px; height: 100px;" alt="">
+      </td>
+      <td>
+          <p class="text-muted mb-0">{{this.result.product}}</p>
+      </td>
+      <td>
+          {{!-- <p class="text-muted mb-0 small">Qty: {{this.products.quantity}}</p> --}}
+          <p class="text-muted mb-0 small">Qty: 1</p>
+      </td>
+       <td>
+          <p class="text-muted mb-0 small">₹{{this.result.price}}</p>
+       </td>
+       <td>
+          <a class="btn btn-success" href="/">Shop Again</a>
+       </td> 
+    </tr>
+    {{/each}}  
+  </tbody>
+</table>
+</section>
+</div>

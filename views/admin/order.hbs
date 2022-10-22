@@ -1,0 +1,58 @@
+<section>
+    <div class="container ml-5">
+        <div class="row">
+            <div id="right-panel" class="right-panel">
+        <a class="text-center  float-right  mt-5" href="/admin/add-catagory"></a>
+        <div class="breadcrumbs">
+        <table class="table display" id="orderTable">
+            <thead>
+                <tr>
+                     <th scope="col">OrderID</th>
+                    {{!-- <th scope="col">ProID</th> --}}
+                     <th scope="col">Date</th>
+                    <th scope="col">Email</th>
+                     <th scope="col">Payment</th>
+                    <th scope="col">Status</th>
+                     <th scope="col">Option</th>
+                      
+
+                   
+                </tr>
+            </thead>
+            {{#each order}}
+            <tbody>
+               
+                <tr>
+                  <td>{{this._id}}</td>
+                  {{!-- <td>{{this.products.item}}</td> --}}
+                   <td>{{this.date}}</td>
+                    <td>{{deliveryDetails.email}}</td>
+                     <td>{{this.paymentMethod}}</td>
+                      <td>{{this.status}}</td>
+                      <td>
+                        <a class="btn btn-link" href="/admin/view-orderproduct/{{this._id}}">View</a>
+                      </td>
+                </tr>
+                
+            </tbody>
+            {{/each}}
+        </table>
+    </div>
+    </div>
+    </div>
+    </div>
+
+</section>
+<script>
+    $(document).ready(function () {
+
+
+        $('#orderTable').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#orderTable').DataTable();
+</script>
+

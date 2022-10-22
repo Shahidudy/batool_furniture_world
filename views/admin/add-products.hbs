@@ -1,0 +1,40 @@
+{{!-- <h1>Admin Add Products</h1> --}}
+<div class="container">
+    <div id="right-panel" class="right-panel">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center mt-3">Add product</h2>
+                <form action="/admin/add-product" method="post" enctype="multipart/form-data">
+
+                    <label for="">Product Name</label>
+                    <input type="text" name="product" class="form-control">
+
+                    <label for="">Description</label>
+                    <input type="text" name="description" class="form-control">
+
+                    <label for="">Price</label>
+                    <input type="number" name="price" class="form-control">
+
+                    <label for="">Image</label>
+                    <input type="file" name="image" class="form-control"><br>
+
+                    <select class="form-select" name="catagory" aria-label="Default select example" id="select">
+                        <option selected>Select Catagory</option>
+                        {{#each catDetails}}
+
+                        <option value="{{this.catagory}}">{{this.catagory}}</option>
+                        {{/each}}
+                    </select><br><br>
+
+
+                   
+
+
+
+
+                    <button type="submit" class="btn btn-success mt-3">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

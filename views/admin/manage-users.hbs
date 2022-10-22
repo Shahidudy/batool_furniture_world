@@ -1,0 +1,75 @@
+<div id="right-panel" class="right-panel">
+    <h1>Manage Users</h1>
+    <form action="/">
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                            </div>
+                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+                            <table class="table display" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Mobile</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each userDetails}}
+                                    <tr>
+                                        <td>{{this.name}} </td>
+                                        <td>{{this.email}} </td>
+                                        <td>{{this.mobile}} </td>
+
+                                        {{#if blocked}}
+
+                                        <td>
+                                            <a href="/admin/unblock-user/{{this._id}}"
+                                                class="btn btn-success">Unblock</a>
+
+                                        </td>
+                                        {{else}}
+                                        <td>
+                                            <a href="/admin/block-user/{{this._id}}" class="btn btn-danger"
+                                                onclick="return confirm('Are you sure to block {{this.name}}?')">Block</a>
+                                        </td>
+                                        {{/if}}
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+
+

@@ -1,0 +1,52 @@
+<div id="right-panel" class="right-panel">
+    <h1> Add Catagory</h1>
+
+</div>
+
+<div class="content">
+    <section>
+        <div class="container row d-flex justify-content-center">
+            <div class="ml-5 col-md-6">
+                <p id="message_alert"></p>
+                <form id="addCatagoryForm" method="post">
+
+
+                    <label for="">Catagory Name</label>
+                    <input type="text" name="catagory" class="form-control" required>
+
+                    <button type="submit" class="btn btn-success mt-4">Add Catagory</button>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+<script>
+
+
+    $("#addCatagoryForm").on('submit', (e) => {
+        e.preventDefault();
+        const form = document.getElementById('addCatagoryForm')
+        let data = $('#addCatagoryForm').serialize()
+        $.ajax({
+            url: '/admin/add-catagory',
+            method: 'post',
+            data: data,
+            success: (response) => {
+
+                if (response.exist) {
+                     $('#message_alert').text('Already Exist')
+                    
+                } else {
+                    location.reload();
+                }
+            }
+        })
+    })
+
+</script>
+

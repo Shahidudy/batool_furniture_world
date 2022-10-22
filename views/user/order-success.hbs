@@ -1,0 +1,67 @@
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-center">
+            <div class="col-first">
+                <h1>Order Details</h1>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Address</th>
+                <th scope="col">Pincode</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Payment</th>
+                <th scope="col">Status</th>
+                <th scope="col">Option</th>
+                <th scope="col">Cancel</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each orders}}
+            <tr>
+
+                {{!-- <th scope="row">1</th> --}}
+                <td>{{this.date}}</td>
+                <td>{{this.deliveryDetails.address}}</td>
+                <td>{{this.deliveryDetails.pincode}}</td>
+                <td>{{this.deliveryDetails.mobile}}</td>
+                {{!-- <td>{{this.grandTotal || this.total}}</td> --}}
+                <td>{{this.GrandTotal}}</td>
+                <td>{{this.paymentMethod}}</td>
+                <td>{{this.status}}</td>
+                <td>
+                    <a class="btn btn-primary" href="/view-order/{{this._id}}">View</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="/item-cancelled/{{this._id}}">Cancel</a>
+                </td>
+                {{!-- <td>
+                     {{#with value}}
+
+
+
+                {{#if status}}
+
+                <a class="btn btn-success mb-5 ml-5" href="#" role="button">Delivered</a>
+                {{else}}
+
+                <a class="primary-btn " href="/item-cancelled/{{this.id}}" role="button">Cancel
+                    Order</a>
+
+                {{/if}}
+
+
+                {{/with}}
+                </td> --}}
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>

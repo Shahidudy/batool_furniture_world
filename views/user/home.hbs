@@ -1,0 +1,209 @@
+<html lang="zxx">
+<header>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{!-- sweetaler --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</header>
+
+<body>
+
+
+
+
+    <!-- Categories Section Begin -->
+
+     <section class="banner set-bg" data-setbg="/images/63382c8a0e2f402d5fd403d0.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-7 col-lg-8 m-auto">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Categories Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="section-title">
+                        <h4>New product</h4>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8">
+                    <ul class="filter__controls">
+                        {{!-- <li class="active" data-filter="*">All</li>
+                        {{#each catagory}}
+                            <li><a href="/catagory-product?catagory={{this.catagory}}">{{this.catagory}}</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {{/each}} --}}
+                        {{!-- <li data-filter=".women">Sofas</li>
+                        <li data-filter=".men">Chairs</li>
+                        <li data-filter=".kid">Tables</li> --}}
+                        {{!-- <li data-filter=".accessories">Accessories</li> --}}
+                        {{!-- <li data-filter=".cosmetic">Cosmetics</li> --}}
+                    </ul>
+                </div>
+            </div>
+
+            <section>
+                <div class="container ">
+                    <div class="row">
+                        {{#each allProducts }}
+
+                        <div class="col-md-3 p-3">
+                            <div class="card mt-4" style="width: 26rem; height:30rem">
+                                <a href="/single-product/{{this._id}}">
+                                    <img src="images/{{this._id}}.jpg" class="card-img-top" alt="..."
+                                        style="height: 12rem;">
+
+                                </a>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">{{this.product}}</h5>
+                                    <p class="card-text">Rs.{{this.price}}</p>
+                                    <p class="card-text">{{this.description}}</p>
+
+                                    {{!-- <i class="fas fa-camera fa-9x"></i> --}}
+                                    <button onclick="addToWishlist('{{this._id}}')"
+                                        class="bi-heart-fill btn btn-primary" style='font-size:7px'> Add to
+                                        Wishlist</button>
+                                    <button onclick="addToCart('{{this._id}}')" class=" bi-cart-fill btn btn-success"
+                                        style='font-size:7px'> Add to Cart</button>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {{/each}}
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
+    <!-- Product Section End -->
+
+    <!-- Banner Section Begin -->
+    <section class="banner set-bg" data-setbg="/admin/images/furn-14.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 col-lg-8 m-auto">
+                    <div class="banner__slider owl-carousel">
+                        <div class="banner__item">
+                            <div class="banner__text">
+                                <span>Wel come to</span>
+                                <h1>Batool Furniture World</h1>
+                                <a href="#">Shop now your favourate thing</a>
+                            </div>
+                        </div>
+                        <div class="banner__item">
+                            <div class="banner__text">
+                                <span>Wel come to</span>
+                                <h1>New Furniture</h1>
+                                <a href="#">Shop now your favourate thing</a>
+                            </div>
+                        </div>
+                        <div class="banner__item">
+                            <div class="banner__text">
+                                <span>Wel come to</span>
+                                <h1>World's Best Wooden Products</h1>
+                                <a href="#">Shop now your favourate thing</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Section End -->
+
+
+    <br>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-7">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="./index.html"><img src="/user/img/logo.png" alt=""></a>
+                        </div>
+                        <p>World famous Furntitures availabled only one showroom, available all collections of wooden
+                            chairs, steel chairs, Beds and Cots, etc...
+                        </p>
+                        <div class="footer__payment">
+                            <a href="#"><img src="/user/img/payment/payment-1.png" alt=""></a>
+                            <a href="#"><img src="/user/img/payment/payment-2.png" alt=""></a>
+                            <a href="#"><img src="/user/img/payment/payment-3.png" alt=""></a>
+                            <a href="#"><img src="/user/img/payment/payment-4.png" alt=""></a>
+                            <a href="#"><img src="/user/img/payment/payment-5.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-5">
+                    <div class="footer__widget">
+                        <h6>Quick links</h6>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <div class="footer__widget">
+                        <h6>Account</h6>
+                        <ul>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Orders Tracking</a></li>
+                            <li><a href="#">Checkout</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <div class="footer__copyright__text">
+                        <p>Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | by Batool
+                            Furniture World <i class="fa fa-heart" aria-hidden="true"></i> <a
+                                href="https://colorlib.com" target="_blank"></a>
+                        </p>
+                    </div>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+
+</body>
+
+</html>

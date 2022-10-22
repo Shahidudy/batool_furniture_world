@@ -1,0 +1,49 @@
+
+
+<link rel="stylesheet" href="../assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+{{!-- <h1>Admin Add Products</h1> --}}
+<div class="container">
+    <div id="right-panel" class="right-panel">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="text-center mt-3">Edit product</h2>
+            <form action="/admin/edit-product/{{product._id}}" method="post" enctype="multipart/form-data">
+
+                <label for="">Product</label>
+                <input type="text" name="product" class="form-control" value="{{product.product}}" required>
+
+                {{!-- <label for="">Catagory</label>
+                <input type="text" name="catagory" class="form-control" value="{{product.catagory}}"> --}}
+
+                <label for="">Description</label>
+                <input type="text" name="description" class="form-control" value="{{product.description}}" required>
+
+                <label for="">Price</label>
+                <input type="text" name="price" class="form-control" value="{{product.price}}" required><br>
+
+                <label for="">Image</label>
+                <img src="/images/{{product._id}}.jpg" alt="" style="width: 100px; height:auto" id="imgView"> <br>
+                <input type="file" name="Image" class="form-control" onchange="viewImage(event)" ><br>
+
+                <select class="form-select" name="catagory" aria-label="Default select example" id="select" >
+                    <option selected>Select Catagory</option>
+                    {{#each catDet}}
+
+                    <option value="{{this.catagory}}">{{this.catagory}}</option>
+                    {{/each}}
+                </select><br>
+
+
+                <button type="submit" class="btn btn-success mt-3">Submit</button>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+
+<script>
+    function viewImage(event){
+        document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+    }
+</script>

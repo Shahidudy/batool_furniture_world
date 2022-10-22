@@ -1,0 +1,129 @@
+<section class="shop-cart mt-0">
+    <div class="container mt-0">
+        {{!-- <div class="row"> --}}
+            <div class="col-lg-12 mt-0">
+                <div class="shop__cart__table">
+                    <table id="mydiv">
+                    
+                      
+                        
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                {{!-- <th>Total</th> --}}
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each products}}
+                            <tr>
+                                <td> <img style="width:70px; height:70px" src="/images/{{this.product._id}}.jpg" alt="">
+                                </td>
+                                <td>
+                                    <h3>{{this.product.product}}</h3>
+                                </td>
+                                <td>
+                                    <h4>{{this.product.price}}</h4>
+                                </td>
+                                <td><button class="cart-item-count mr-3"
+                                        onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{this.quantity}}',-1)">-</button>
+                                    <span id="{{this.product._id}}">{{this.quantity}}</span>
+                                    <button class="cart-item-count ml-3"
+                                        onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{this.quantity}}',1)">+</button>
+                                </td>
+                                {{!-- <td class="cart__total">{{this.total}}</td> --}}
+
+                                <td>
+                                    <button class="btn btn-danger"
+                                        onclick="removeProduct('{{this._id}}','{{this.product._id}}')">Remove</button>
+
+                                </td>
+
+
+                            </tr>
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {{!--
+        </div> --}}
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="cart__btn">
+                    {{!-- <a href="/shop">Continue Shopping</a> --}}
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="cart__btn update__btn">
+                </div>
+            </div>
+        </div>
+        <div class="row mt-0">
+            <div class="col-lg-6">
+                <div class="discount__content">
+                </div>
+            </div>
+            <div class="col-lg-4 offset-lg-2">
+                <div class="cart__total__procced" id="mycart">
+                    <h6>Cart total</h6>
+                    <ul>
+
+                        <li>Total <span id="total">{{total}}</span></li>
+                    </ul>
+                    <a href="/checkout" class="primary-btn">Place Order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<script>
+    function changeQuantity(cartId, proId, qty, count) {
+        let quandity = parseInt(qty)
+        count = parseInt(count)
+
+        $.ajax(
+            {
+                url: '/change-product-quantity',
+                data: {
+
+                    cart: cartId,
+                    product: proId,
+                    count: count,
+                    quantity: quandity
+                },
+                method: 'post',
+                success: (response) => {
+                    if (response.removeProduct) {
+                        Swal.fire({
+                            // position: 'top-end',
+                            icon: 'success',
+                            title: 'Product Removed from the Cart',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+
+                        location.reload()
+                    } else {
+                        $("#mydiv").load(location.href + " #mydiv");
+                        $("#mycart").load(location.href + " #mycart");
+
+
+                        document.getElementById(proId).innerHTML = quandity + count
+
+                    }
+
+                }
+            }
+        )
+    }
+</script>
