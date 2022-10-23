@@ -4,7 +4,7 @@ const state ={
 }
 
 module.exports.connect = (done)=>{
-  const url = "mongodb://localhost:27017";
+  const url = process.env.MONGO_URL;
   const dbname = "New_Furnitures"
 
   MongoClient.connect(url,(err, data)=>{

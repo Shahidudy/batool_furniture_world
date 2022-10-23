@@ -8,25 +8,27 @@ const { response } = require('express')
 
 module.exports = {
     doLogin: (adminData) => {
+        console.log(adminData,"adminDataadminDataadminDataadminData");
         return new Promise(async (resolve, reject) => {
             try {
                 let response = {}
                 let admin = await db.get().collection(collection.ADMIN_COLLECTION).findOne({ email: adminData.email })
+                console.log(admin,"16mmmmmmm");
                 if (admin) {
                     bcrypt.compare(adminData.password, admin.password).then((status) => {
                         if (status) {
                             response.status = true
                             response.admin = admin
                             resolve(response)
-                            console.log('admin login successful');
+                            console.log('admin login 22 successful');
                         } else {
                             resolve({ status: false })
-                            console.log('admin login failed');
+                            console.log('admin login 25 failed');
                         }
                     })
                 } else {
                     resolve({ status: false })
-                    console.log('admin login failed');
+                    console.log('admin login 30 failed');
 
                 }
             } catch (error) {
